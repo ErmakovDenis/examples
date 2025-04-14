@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hw
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ErmakovDenis/examples.git  # Ваш Git-репозиторий
+    path: ./charts/hello-world  # Путь к чарту
+    targetRevision: main  # Ветка или тег
+    helm:
+      releaseName: hw1
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Validate=true   # Проверка манифестов перед применением
+      - CreateNamespace=true
+    retry:
+      limit: 2          # Количество попыток перед откатом
+      backoff:
+        duration: 5s    # Задержка между попытками
