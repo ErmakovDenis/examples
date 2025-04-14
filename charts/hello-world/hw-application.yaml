@@ -19,9 +19,10 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      - Validate=true   # Проверка манифестов перед применением
+      - Validate=true
       - CreateNamespace=true
     retry:
-      limit: 2          # Количество попыток перед откатом
+      limit: 2
       backoff:
-        duration: 5s    # Задержка между попытками
+        duration: 5s
+
