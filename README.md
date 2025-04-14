@@ -1,7 +1,7 @@
 # Helm Example Repository
 
 Ahoy world!  I'm a Helm repository for example charts.
-
+Теперь это моя копия!
 ## Get started
 
 Add this repository to Helm.
